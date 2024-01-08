@@ -32,19 +32,24 @@ createApp({
     methods: {
         slidePrev(){
             if ( this.counter > 0){
+        
                 this.counter--;
             }
             else{
+        
                 this.counter = this.slides.length -1;
             }
         },
         slideNext(){
-            if ( this.counter > 0){
-                this.counter--;
+            if ( this.counter < (this.slides.length - 1) ){
+                this.counter++;
             }
             else{
-                this.counter = this.slides.length -1;
-            };
+                this.counter = 0;
+            }
         },
+        slideActive(number){
+            this.counter=number;
+        }
     }
 }).mount("#app");

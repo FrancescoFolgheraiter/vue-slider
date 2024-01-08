@@ -1,9 +1,14 @@
+/*
+    RESET
+*/
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
+/*
+    GENERAL
+*/
 .container {
     height: 100vh;
     display: flex;
@@ -11,12 +16,14 @@
     align-items: center;
 }
 
-.item {
+.item{
     float: left;
     width: 700px;
     height: 300px;
     position: relative;
 }
+
+
 
 .item img {
     width: 100%;

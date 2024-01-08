@@ -16,20 +16,19 @@
 
         <div class="container">
             <div class="slider-wrapper" tabindex="0">
-
-                <div class="item" v-for = "(elem) in slides">
-                    <img :src="elem.image" alt="Spiderman" />
+                <div class="item">
+                    <img :src="slides[counter].image" alt="slides[counter].title"/>
                     <div class="text">
-                        <h3> {{elem.title}} </h3>
+                        <h3>{{slides[counter].title}}</h3>
                         <p>
-                            {{elem.text}}
+                            {{slides[counter].text}}
                         </p>
                     </div>
                 </div>
 
                 <div class="thumbs">
-                    <div class="prev"></div>
-                    <div class="next"></div>
+                    <div @click="slidePrev" class="prev"></div>
+                    <div @click="slideNext" class="next"></div>
                     <div class="thumb active">
                         <img src="img/01.webp" alt="Svezia" />
                     </div>

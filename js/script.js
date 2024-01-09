@@ -26,9 +26,11 @@ createApp({
                     text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
                 }
             ],
-            counter: 0,  
+            counter: 0,
+            autoplay: null,  
         };
     },
+
     methods: {
         slidePrev(){
             if ( this.counter > 0){
@@ -49,7 +51,49 @@ createApp({
             }
         },
         slideActive(number){
-            this.counter=number;
+            if (this.counter == number){
+                return "active";
+            }
+            else{
+                return "";
+            }
+        },
+        selectSlide(number){
+            this.counter = number
+        },
+        mouseEnterSlider(){
+            console.log("sei entrato nello slider")
+            clearInterval(this.autoplay);
+            //svuotamento variabile autplay
+            this.autoplay = null;
+        },
+        mouseLeaveSlider(){
+            console.log("hai lasciato lo slider")
+            this.autoplay = setInterval(this.slideNext, 1000);
         }
+    },
+    mounted(){
+        /*primo modo di scrivere setInterval tramite arrow function
+        setInterval(() => {
+            this.slideNext()
+        }, 500)
+        */
+        //secondo modo, tramite definizione di funzione nominata
+        this.autoplay = setInterval(this.slideNext, 1000);
+        /*
+        -non posso usare la scrittura di una function anonima perchè this fa riferimento
+        alla window
+        si può ovviare "sporcando il codice" in questa maniera
+        const self = this;  -- permette di salvare in varialbile il this
+
+        setInterval (function () {
+            self.slideNext()
+        }, 3000)
+        */
     }
 }).mount("#app");
+
+/*
+correzione
+
+*/
